@@ -5,6 +5,14 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 ![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white)
 
+## Screenshots
+
+### Light Mode
+![Light Mode]("./screenshots/light_mode.png")
+
+### Dark Mode
+![Dark Mode]("./screenshots/dark_ish_mode.png")
+
 ## Frontend 
 ### Usage
 Install all the dependencies with:
