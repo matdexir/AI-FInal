@@ -20,4 +20,9 @@ const colors = {
   },
 };
 
-export default extendTheme({config, colors});
+const fonts = {
+  heading: "AkayaKanadaka_400Regular",
+  body: "AkayaKanadaka_400Regular",
+}
+
+export default extendTheme({config, colors, fonts});

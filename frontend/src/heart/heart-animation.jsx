@@ -2,6 +2,7 @@ import * as Animatable from "react-native-animatable";
 import { Text, Divider, Box } from "native-base";
 
 const HeartAnimation = (props) => {
+  const feedback = props.feedback === "normal";
   return (
     <Box alignItems="center">
       <Box w="200">
@@ -11,7 +12,7 @@ const HeartAnimation = (props) => {
           iterationCount="infinite"
           style={{ fontSize: 75, textAlign: "center" }}
         >
-          ❤ 💔
+          {feedback ? "❤" : "💔"}
         </Animatable.Text>
         <Divider
           orientation="horizontal"
@@ -21,8 +22,10 @@ const HeartAnimation = (props) => {
           _light={{ bg: "rose.900" }}
         />
       </Box>
-      <Text>From our analysis, you are completely fine!</Text>
-      <Text>From our analysis, you should get checked out by a doctor</Text>
+      {feedback && <Text>From our analysis, you are completely fine!</Text>}
+      {!feedback && (
+        <Text>From our analysis, you SHOULD get checked out by a doctor</Text>
+      )}
     </Box>
   );
 };

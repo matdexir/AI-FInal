@@ -13,12 +13,17 @@ import React, { useState } from "react";
 import ThemeToggle from "../theme/theme-toggle";
 import HeartAnimation from "../heart/heart-animation";
 import Disclaimer from "../disclaimer/disclaimer";
+import {useFonts, AkayaKanadaka_400Regular } from "@expo-google-fonts/akaya-kanadaka"
+import AppLoading from "expo-app-loading";
 import axios from "axios";
 
 const Main = () => {
   const [feedback, setFeedback] = useState("");
+  const [fontLoaded] = useFonts({
+    AkayaKanadaka_400Regular,
+  });
 
-    const getDataUsingAsyncAwaitGetCall = async () => {
+  const handleFetch = async () => {
     try {
       // This was the most annoying bug that I have ever encountered in my life
       // Lessons to be learned
@@ -27,30 +32,31 @@ const Main = () => {
       // Hence to axios we're sending requests to the VM not to the dev machine who's ip is 10.0.2.2
       // So yeah hopefully you don't reproduce that mistake anymore
       const response = await axios.get(
-        'http://10.0.2.2:8000/hi',
+        "http://10.0.2.2:8000/hi"
+        // do not change 10.0.2.2
       );
-      console.log(response)
+      // console.log(response);
       setFeedback(response.data);
     } catch (error) {
       alert(error.message);
     }
   };
-
+  if (!fontLoaded) {
+    return <AppLoading />
+  }
   return (
     <Center
-      _dark={{ bg: "darkBlue.900" }}
-      _light={{ bg: "darkBlue.50" }}
+      _dark={{ bg: "rose.900" }}
+      _light={{ bg: "rose.300" }}
       px="6"
       flex={1}
     >
-      <VStack space={7} alignItems="center">
-        <HeartAnimation />
-        <Box>
-          <Text>{feedback}</Text>
-          <Button variant="solid" colorScheme="primary" onPress={getDataUsingAsyncAwaitGetCall}>
-            Fetch
-          </Button>
-        </Box>
+      <VStack space={5} alignItems="center">
+        <HeartAnimation feedback={feedback}/>
+        <Text>{feedback}</Text>
+        <Button variant="solid" colorScheme="primary" onPress={handleFetch}>
+          Fetch
+        </Button>
         <ThemeToggle />
         <Disclaimer />
       </VStack>

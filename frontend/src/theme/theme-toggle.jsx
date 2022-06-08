@@ -4,13 +4,13 @@ import React from "react";
 const ThemeToggle = () => {
   const {colorMode, toggleColorMode} = useColorMode();
   return (
-    <HStack space={2} alignItems="center">
-      <Text>dark</Text>
+    <HStack space={1} alignItems="center">
+      <Text>🌙</Text>
       <Switch
         isChecked={colorMode === "light"}
         onToggle={toggleColorMode}
       ></Switch>
-      <Text>light</Text>
+      <Text>🌞</Text>
     </HStack>
   );
 };
