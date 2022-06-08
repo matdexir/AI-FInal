@@ -1,20 +1,10 @@
-import {
-  Box,
-  Button,
-  Center,
-  Text,
-  VStack,
-  useTheme,
-  themeTools,
-  useColorMode,
-  useColorValue,
-} from "native-base";
+import { Button, Center, Text, VStack } from "native-base";
 import React, { useState } from "react";
 import ThemeToggle from "../theme/theme-toggle";
 import HeartAnimation from "../heart/heart-animation";
 import Disclaimer from "../disclaimer/disclaimer";
-import {useFonts, AkayaKanadaka_400Regular } from "@expo-google-fonts/akaya-kanadaka"
-import AppLoading from "expo-app-loading";
+import { AkayaKanadaka_400Regular } from "@expo-google-fonts/akaya-kanadaka";
+import { useFonts } from "expo-font";
 import axios from "axios";
 
 const Main = () => {
@@ -42,8 +32,9 @@ const Main = () => {
     }
   };
   if (!fontLoaded) {
-    return <AppLoading />
+    return null;
   }
+
   return (
     <Center
       _dark={{ bg: "rose.900" }}
@@ -52,8 +43,8 @@ const Main = () => {
       flex={1}
     >
       <VStack space={5} alignItems="center">
-        <HeartAnimation feedback={feedback}/>
-        <Text>{feedback}</Text>
+        <HeartAnimation feedback={feedback} />
+        <Text fontSize="40">{feedback}</Text>
         <Button variant="solid" colorScheme="primary" onPress={handleFetch}>
           Fetch
         </Button>

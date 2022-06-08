@@ -22,9 +22,9 @@ const HeartAnimation = (props) => {
           _light={{ bg: "rose.900" }}
         />
       </Box>
-      {feedback && <Text>From our analysis, you are completely fine!</Text>}
+      {feedback && <Text fontSize={20}>From our analysis, you are completely fine!</Text>}
       {!feedback && (
-        <Text>From our analysis, you SHOULD get checked out by a doctor</Text>
+        <Text fontSize={20}>From our analysis, you SHOULD get checked out by a doctor</Text>
       )}
     </Box>
   );
