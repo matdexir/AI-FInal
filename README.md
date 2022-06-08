@@ -8,10 +8,11 @@
 ## Screenshots
 
 ### Light Mode
-![Light Mode]("./screenshots/light_mode.png")
+![Light Mode](./screenshots/light_mode.png?raw=true)
+
 
 ### Dark Mode
-![Dark Mode]("./screenshots/dark_ish_mode.png")
+![Dark Mode](./screenshots/dark_ish_mode.png?raw=true)
 
 ## Frontend 
 ### Usage
@@ -24,7 +25,8 @@ To run the android app for android:
 `yarn android`
 
 If it does not work refer to:
-![Expo](https://docs.expo.dev/workflow/expo-cli/)
+
+[Expo](https://docs.expo.dev/workflow/expo-cli/)
 
 
 ## Backend
@@ -32,9 +34,12 @@ If it does not work refer to:
 
 I used FastAPI since I didn't quite get how to get Flask to work. But I should be able to fix the issues with Flask later
 
-First(PLEASE run it in Virtualenv): 
+First(__PLEASE run it in Virtualenv__): 
+
 `pip install requirements.txt`
 
 To run it:
+
 NOTE: the port is hard-coded for now but I will fix it later
+
 `uvicorn main:app --reload --port 8000`
