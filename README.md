@@ -8,10 +8,11 @@
 ## Screenshots
 
 ### Light Mode
-![Light Mode]("./screenshots/light_mode.png?raw=true")
+![Light Mode](./screenshots/light_mode.png?raw=true)
+
 
 ### Dark Mode
-![Dark Mode]("./screenshots/dark_ish_mode.png?raw=true")
+![Dark Mode](./screenshots/dark_ish_mode.png?raw=true)
 
 ## Frontend 
 ### Usage
