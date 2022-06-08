@@ -11,7 +11,7 @@ CORS(app)
 
 @app.route('/hi')
 def hi():
-    print("Say hi nigga")
-    return f"{random.randint(1,100)}: Hi nigga"
+    ret = ["normal", "sick"] 
+    return ret[random.randint(0, 1)]
 
-app.run(port=4000)
+app.run(port=8000)
