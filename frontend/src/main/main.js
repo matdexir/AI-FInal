@@ -6,6 +6,7 @@ import Disclaimer from "../disclaimer/disclaimer";
 import { AkayaKanadaka_400Regular } from "@expo-google-fonts/akaya-kanadaka";
 import { useFonts } from "expo-font";
 import axios from "axios";
+import { Platform } from "react-native";
 
 const Main = () => {
   const [feedback, setFeedback] = useState("");
@@ -21,10 +22,22 @@ const Main = () => {
       // Now the localhost of the dev machine is also 127.0.0.1
       // Hence to axios we're sending requests to the VM not to the dev machine who's ip is 10.0.2.2
       // So yeah hopefully you don't reproduce that mistake anymore
-      const response = await axios.get(
-        "http://10.0.2.2:8000/hi"
-        // do not change 10.0.2.2
-      );
+      //
+      let response;
+      if (Platform.OS === "web") {
+        response = await axios.get(
+          "http://127.0.0.1:8000/hi"
+          // do not change
+        );
+      } else if (Platform.OS === "android") {
+        response = await axios.get(
+          "http://10.0.2.2:8000/hi"
+          // do not change
+        );
+      } else {
+        throw "Platform not supported! I cannot afford it T_T.";
+      }
+
       // console.log(response);
       setFeedback(response.data);
     } catch (error) {
