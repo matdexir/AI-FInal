@@ -1,15 +1,18 @@
 import { Button, Center, Text, VStack } from "native-base";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ThemeToggle from "../theme/theme-toggle";
 import HeartAnimation from "../heart/heart-animation";
 import Disclaimer from "../disclaimer/disclaimer";
 import { AkayaKanadaka_400Regular } from "@expo-google-fonts/akaya-kanadaka";
+import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { useFonts } from "expo-font";
 import axios from "axios";
 import { Platform } from "react-native";
 
 const Main = () => {
   const [feedback, setFeedback] = useState("");
+  const [key, setKey] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [fontLoaded] = useFonts({
     AkayaKanadaka_400Regular,
   });
@@ -56,11 +59,29 @@ const Main = () => {
       flex={1}
     >
       <VStack space={5} alignItems="center">
-        <HeartAnimation feedback={feedback} />
+        <HeartAnimation feedback={feedback} start={key} playing={isPlaying} />
         <Text fontSize="40">{feedback}</Text>
-        <Button variant="solid" colorScheme="primary" onPress={handleFetch}>
-          Fetch
+        <Button
+          variant="solid"
+          colorScheme="primary"
+          onPress={() => {
+            setKey(key + 1);
+            setIsPlaying(true);
+          }}
+        >
+          Start
         </Button>
+        {isPlaying && (
+          <Button
+            variant="solid"
+            colorScheme="secondary"
+            onPress={() => {
+              setIsPlaying(false);
+            }}
+          >
+            Restart
+          </Button>
+        )}
         <ThemeToggle />
         <Disclaimer />
       </VStack>
