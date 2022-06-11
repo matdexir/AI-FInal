@@ -4,7 +4,7 @@ import ThemeToggle from "../theme/theme-toggle";
 import HeartAnimation from "../heart/heart-animation";
 import Disclaimer from "../disclaimer/disclaimer";
 import { AkayaKanadaka_400Regular } from "@expo-google-fonts/akaya-kanadaka";
-import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
+// import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 import { useFonts } from "expo-font";
 import axios from "axios";
 import { Platform } from "react-native";
@@ -59,7 +59,11 @@ const Main = () => {
       flex={1}
     >
       <VStack space={5} alignItems="center">
-        <HeartAnimation feedback={feedback} start={key} playing={isPlaying} />
+        <HeartAnimation
+          /* feedback={feedback} */ start={key}
+          playing={isPlaying}
+          setPlaying={setIsPlaying}
+        />
         <Text fontSize="40">{feedback}</Text>
         <Button
           variant="solid"
@@ -69,7 +73,7 @@ const Main = () => {
             setIsPlaying(true);
           }}
         >
-          Start
+          {!isPlaying ? "Start" : "Restart"}
         </Button>
         {isPlaying && (
           <Button
@@ -79,9 +83,10 @@ const Main = () => {
               setIsPlaying(false);
             }}
           >
-            Restart
+          Cancel
           </Button>
         )}
+
         <ThemeToggle />
         <Disclaimer />
       </VStack>
